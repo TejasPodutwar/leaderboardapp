@@ -1,6 +1,8 @@
 # leaderboardapp
 Node.js Leaderboard Application
 
+This is a Leaderboard App to create a leaderboard among your colleague built with Node.js, Express, Mongodb and EJS Templete Engine. 
+
 TO RUN THE APP LOCALLY:
 
 Step 1: Clone the Repository using the command: git clone https://github.com/TejasPodutwar/leaderboardapp.git
