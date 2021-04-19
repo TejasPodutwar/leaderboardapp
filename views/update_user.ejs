@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <link rel="stylesheet" href="add_user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+    <%- include('partials/_header') %> 
+
+    <div class="form-title">
+        <h2 class="form-title1">UPDATE USER</h2>
+        <span class=form-title2>Fill in the form to Update your Details</span>
+    </div>
+
+    <form method="POST" id="update_user">
+        <div class="new_user">
+            <div class="form_field">
+                <label for="name">Name:</label>
+                <input type="hidden" name="id" value="<%= user._id %> ">
+                <input type="text" name="name" value="<%= user.name %>" placeholder="Tejas Podutwar">
+            </div>
+            <div class="form_field">
+                <label for="score">Score:</label>
+                <input type="number" name="score" value="<%= user.score %>" placeholder="10">
+            </div>
+            <div class="form_field">
+                <button type="submit" data-doc="<%= user._id %> " class="submit-btn">Save</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        const update_form = document.querySelector('#update_user');
+        
+        update_form.addEventListener("submit" , (e) =>{
+            e.preventDefault();
+            let updated_data = new URLSearchParams();
+            let id = "";
+            for (const pair of new FormData(update_form)) 
+            {
+                if(pair[0]!= "id"){
+                    updated_data.append(pair[0],pair[1]);
+                }
+                else{
+                    id = pair[1];
+                }
+            }
+
+            const url = `/api/users/${id}`;
+
+            fetch(url, {
+                method:'PUT',
+                body: updated_data
+            })
+            .then( response => {response.json();})
+            .then( data => { alert("Data updated Successfully!!") } )
+            .catch( err => {console.log(err);}) 
+        })
+
+    </script>
+</body>
+</html>

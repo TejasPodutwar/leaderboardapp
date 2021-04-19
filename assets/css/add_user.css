@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color:#adb5bd;
+}
+
+li{
+    list-style: none;
+}
+
+.text-light{
+    color: #adb5bd;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #161623;
+    color: #edf2f491;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title{
+    padding: 0.5em;
+    margin: 1em 1em;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.add-user{
+    cursor: pointer;
+    padding: 0.5em;
+    margin: 1em 1em;  
+}
+
+.add-user> a:hover{
+    color: #edf2f4;
+}
+
+@media screen and (max-width: 380px){
+    .site-title , .add-user{
+        margin: 0.5em;
+        font-size: 16px;
+    }
+}
+
+/* Form title */
+.form-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 10vh;
+    margin-top: 5rem;
+    color: #70a1ff;
+}
+
+.form-title1{
+    padding: 0.2em;
+    margin: 0.3em;
+}
+
+.form-title2{
+    padding: 0.2em;
+    margin: 0.2em;
+    color: #f1f2f6ad;
+}
+
+@media screen and (max-width: 380px){
+    .form-title{
+        font-size: small;
+        height: 10vh;
+        margin-top: 4rem;
+    }
+}
+
+.new_user{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1em;
+    margin-top: .5em;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#update_user .form_field input,#add_user .form_field input{
+    width: 229px;
+    height: 30px;
+    padding: 6px;
+    margin: 0.8em;
+    margin-top: 0.4em;
+    border: 1px solid #dee2e6;
+    background-color: #edf2f4;
+    border-radius: 3px;
+}
+
+.submit-btn{
+    width: 100px;
+    height: 30px;
+    margin: 0.8em;
+    margin-left: 50px;
+    margin-top: 0.4em;
+    background-color: #ffa502;
+    border: none;
+    border-radius: 5px;
+    color: #edf2f4;
+    font-size: medium;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 380px){
+    .new_user{
+        font-size: 1em;
+    }
+
+    #add_user .form_field input{
+        width: 140px;
+        height: 20px;
+        padding: 10px;
+        margin: 0.6em;
+    }
+    .submit-btn{
+        width: 70px;
+        height: 24px;
+    }
+}
+
+
+
+
+
+
+
+

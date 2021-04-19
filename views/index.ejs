@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+    
+    <%- include('partials/_header') %> 
+
+    <div class="container">
+
+        <div class="container-1">
+
+            <% if(users.length > 0){ %> 
+                <div class="card">
+                    <div class="winner-name">
+                        <p class="name"><%= users[0].name %> </p>
+                    </div>
+                    <div class="pos_img">
+                        <img src="medal1.png">
+                    </div>
+                    <div class="score">
+                        <p>Score: <%= users[0].score %> pts</p>
+                    </div>
+                </div>
+            <% } %>  
+
+            <% if(users.length > 1){ %> 
+            <div class="card">
+                <div class="winner-name">
+                    <p class="name"><%= users[1].name %></p>
+                </div>
+                <div class="pos_img">
+                    <img src="medal2.png">
+                </div>
+                <div class="score">
+                    <p>Score: <%= users[1].score %> pts</p>
+                </div>
+            </div>
+            <% } %> 
+            
+            <% if(users.length > 2){ %> 
+            <div class="card">
+                <div class="winner-name">
+                    <p class="name"><%= users[2].name %></p>
+                </div>
+                <div class="pos_img">
+                    <img src="medal3.png">
+                </div>
+                <div class="score">
+                    <p>Score: <%= users[2].score %> pts</p>
+                </div>
+            </div>
+            <% } %>  
+        </div>
+
+        <div class="container-2">
+            <% if(!users.length) { %> 
+                <p>CREATE YOUR LEADER BOARD BY ADDING USERS!</p>
+            <% } %> 
+            <table>
+                <% if(users.length > 0) { %> 
+                    <thead class="t-head">
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Action</th>
+                    </thead>
+                <% } %> 
+                <% if(users.length >0) { %> 
+                    <% users.forEach( (user,idx) => { %> 
+                        <tbody class="t-body">
+                            <td><%= idx+1 %> </td>
+                            <td><%= user.name %> </td>
+                            <td><%= user.score%> </td>
+                            <td class="actions">
+                                <a href="/update_user?id=<%= user._id %>" class="btn update">
+                                    <span><i class="fa fa-pencil-alt" aria-hidden="true"></i></span>
+                                </a>
+                                <a class="btn delete" data-id="<%= user._id %>" onclick="del_user(this)">
+                                    <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                </a>
+                            </td>
+                        </tbody> 
+                    <% }) %> 
+                <% } %> 
+            </table>
+            <script>
+
+                function del_user(del_btn){
+                    
+                    const id = del_btn.dataset.id;
+                    const url = `/api/users/${id}`;
+
+                    if(confirm("Are you sure you want to delete the user?")){
+                        fetch(url,{
+                            method: 'DELETE',
+                        })
+                        .then( res => {res.json()})
+                        .then( data => { 
+                            alert("User deleted Successfully!!");
+                            window.location.href = '/';
+                        })
+                        .catch( err => {
+                            console.log(err);
+                        })
+                    }   
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

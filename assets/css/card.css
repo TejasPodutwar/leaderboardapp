@@ -1,0 +1,46 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #161623;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 1px #fff;
+    border-radius: 4px;
+    height: 250px;
+    width: 220px;
+    background-color: #227093;
+    color:rgba(255, 255, 255, 0.753);
+}
+
+.card img{
+    height: 120px;
+}
+
+.card .winner-name, .score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    font-size: x-large;
+}
+
+.card .pos_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
